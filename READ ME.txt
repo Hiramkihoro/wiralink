@@ -1,0 +1,52 @@
+
+1.Extract the zipped file 
+2. CD to the wlink folder extracted
+3. node index.js
+4. It will give a url like http://localhost:4000/ 
+5. open that url and paste the queries below to interact with the data
+
+//query to get a user and their account info
+{
+  hpal(filter:{email:"wanceafd@gmail.com"}){
+    email
+    owns_acc{
+      accNum
+      accBal
+      PendingPayment
+    }
+  }
+}
+
+
+/////Query to get bids on a particular order
+
+{
+  Running(filter: {oid:"3024b943-d3a7-4d6c-b300-db1be9b9ad6d"}){
+    oid
+    pgs
+    hpals{
+      email
+      did_bid(orderBy:bidAmount_asc){
+        bid
+        bidAmount
+      }
+    }
+  }
+}
+
+///Sample Transactions
+
+{
+  Mpesa(filter:{FirstName:"Hiram"}){
+    TransID
+    TransAmount
+    FirstName
+    LastName
+    BillRefNumber
+    accounts{
+      accNum
+      accBal
+      PendingPayment
+    }
+  }
+}
